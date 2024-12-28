@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Nexus | Modern & Lightweight Admin Panel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Remix Icon CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <style>
+        main {
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa; /* Subtle background for better visual appeal */
+        }
+
+        .card {
+            width: 100%;
+            max-width: 750px;
+            border: none;
+            overflow: hidden;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Enhances shadow */
+        }
+
+        .card-body {
+            display: flex;
+            flex-wrap: wrap; /* Ensures responsiveness for smaller screens */
+            padding: 0;
+        }
+
+        .left-area {
+            flex: 1 1 50%; /* Adjusts proportion dynamically */
+            display: none; /* Initially hidden for smaller screens */
+        }
+
+        .left-area img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            -webkit-user-drag: none;
+        }
+
+        .right-area {
+            flex: 1 1 100%;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+
+
+        .right-area h2 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: #333; /* Neutral color for heading */
+        }
+
+        .btn {
+            margin-top: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .left-area {
+                display: block; /* Show left area on medium to larger screens */
+            }
+
+            .right-area {
+                flex: 1 1 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <div class="card">
+            <div class="card-body">
+                <!-- Left Area -->
+                <div class="left-area">
+                    <img src="./assets/images/login-img.jpg" alt="Login Image">
+                </div>
+
+                <!-- Right Area -->
+                <div class="right-area py-5">
+                    <form action="" method="post">
+                        <h2 class="mb-0">Admin Login</h2>
+                        <p class="text-center text-muted small mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>
+                        <!-- Username Input -->
+                        <div class="input-group mb-3">
+                            <span class="input-group-text"><i class="ri-user-line"></i></span>
+                            <input type="text" class="form-control" placeholder="Username" required>
+                        </div>
+                        <!-- Password Input -->
+                        <div class="input-group mb-2">
+                            <span class="input-group-text"><i class="ri-key-line"></i></span>
+                            <input type="password" class="form-control" placeholder="Password" required>
+                        </div>
+                        <div class="float-end small"><a href="#">Forget password</a></div>
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary w-100">Login</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- jQuery -->
+    <script src="./assets/vendors/jquery/jquery-v3.7.1.js"></script>
+    <!-- Functions -->
+    <script src="./assets/js/functions.js"></script>
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
