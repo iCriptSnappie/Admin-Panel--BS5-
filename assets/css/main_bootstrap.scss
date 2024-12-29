@@ -1,0 +1,19 @@
+$primary: #0097e6;
+$dark: #0f172a;
+$info: #487eb0;
+$bg: rgba(30, 41, 59, 1);
+$bg-hover: rgba(43, 59, 82, 0.5);
+$box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+// Dropdown
+$dropdown-bg: $bg;
+$dropdown-link-hover-bg: $bg-hover;
+$dropdown-link-active-color: $primary;
+$dropdown-link-active-bg: none;
+$dropdown-box-shadow: $box-shadow;
+
+// Navbar
+$navbar-active-color: $primary;
+
+// Include bootstrap
+@import "./BS@5.3.3/node_modules/bootstrap/scss/bootstrap.scss";

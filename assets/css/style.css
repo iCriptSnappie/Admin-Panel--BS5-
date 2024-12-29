@@ -1,101 +1,130 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
-:root{
-    --offcanvas-width: 270px;
-    --topNavbarHeight: 56px;
+:root {
+  --offcanvas-width: 270px;
+  --topNavbarHeight: 56px;
 
-    --transition-time: .25s;
+  --transition-time: 0.25s;
 }
 
-body, button{
-    font-family: 'Inter', sans-serif;
+body,
+button {
+  font-family: "Inter", sans-serif;
 }
 
-.sidebar-nav{
-    width: var(--offcanvas-width) !important;
+.navbar-dark,
+.navbar[data-bs-theme="dark"] {
+  --bs-navbar-active-color: var(--bs-primary);
+}
+
+.sidebar-nav {
+  width: var(--offcanvas-width) !important;
 }
 
 @media (min-width: 992px) {
-    body{
-        overflow: auto !important;
-    }
-    .offcanvas-backdrop{
-        display: none;
-    }
-    main{
-        margin-left: var(--offcanvas-width);
-    }
-    .sidebar-nav{
-        transform: none !important;
-        visibility: visible !important;
-        top: var(--topNavbarHeight) !important;
-        height: calc(100% - var(--topNavbarHeight)) !important;
-    }
+  body {
+    overflow: auto !important;
+  }
+  .offcanvas-backdrop {
+    display: none;
+  }
+  main {
+    margin-left: var(--offcanvas-width);
+  }
+  .sidebar-nav {
+    transform: none !important;
+    visibility: visible !important;
+    top: var(--topNavbarHeight) !important;
+    height: calc(100% - var(--topNavbarHeight)) !important;
+  }
 }
 
-.sidebar-link{
-    display: flex;
-    align-items: center;
+.sidebar-link {
+  display: flex;
+  align-items: center;
 }
 
-.sidebar-link .right-icon{
-    display: inline-flex;
-    transition: all ease 0.25s;
+.sidebar-link .right-icon {
+  display: inline-flex;
+  transition: all ease 0.25s;
 }
 
-.sidebar-link[aria-expanded="true"] .right-icon{
-    transform: rotate(180deg);
+.sidebar-link[aria-expanded="true"]{
+    color: var(--bs-primary);
 }
 
+.sidebar-link[aria-expanded="true"] .right-icon {
+  transform: rotate(180deg);
+}
 
-main{
-    background-color: #f3f4f7;
+.navbar-nav {
+  --navbar-nav-link-bg-active: rgba(43, 59, 82, 0.5);
+  --navbar-nav-link-boder-color-active: var(--bs-primary);
+
+  .sidebar-link:hover,
+  .sidebar-link.active,
+  .sidebar-link[aria-expanded="true"],
+  .collapse{
+    background-color: var(--navbar-nav-link-bg-active);
+  }
+
+  .sidebar-link.active {
+    background-color: var(--navbar-nav-link-bg-active);
+    border-left: 3px solid var(--navbar-nav-link-boder-color-active);
+  }
+
+  .collapse .navbar-nav .nav-link:hover{
+    color: var(--bs-primary);
+  }
+}
+
+main {
+  background-color: #f3f4f7;
 }
 
 .st-card {
-    border: none;
-    border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    width: 100%;
+  border: none;
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 100%;
 }
 
 .st-card .st-data h2 {
-    font-size: 2.5rem;
-    margin-bottom: 0;
+  font-size: 2.5rem;
+  margin-bottom: 0;
 }
 
 .st-card .st-data p {
-    font-size: 0.9rem;
+  font-size: 0.9rem;
 }
 
-.st-card .st-icon{
-    position: relative;
+.st-card .st-icon {
+  position: relative;
 }
 
 .st-card .st-icon i {
-    font-size: 5.5rem !important;
-    opacity: .5;
-    position: absolute;
-    bottom: -65px;
-    right: -10px;
-    transition: ease var(--transition-time);
+  font-size: 5.5rem !important;
+  opacity: 0.5;
+  position: absolute;
+  bottom: -65px;
+  right: -10px;
+  transition: ease var(--transition-time);
 
-    &:hover{
-        transform: scale(1.1);
-    }
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 .card-footer {
-    background-color: rgba(0, 0, 0, 0.1);
-    border-top: none;
-    font-size: 0.9rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-top: none;
+  font-size: 0.9rem;
 }
 
 .card-footer a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-
-.entries-per-page select{
-    width: fit-content;
+.entries-per-page select {
+  width: fit-content;
 }
