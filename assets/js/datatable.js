@@ -1,7 +1,8 @@
 $(document).ready(function () {
     function initializeDataTable(table) {
         const $table = $(table);
-        const $rows = $table.find('tbody tr');
+        const $tbody = $table.find('tbody');
+        const $rows = $tbody.find('tr');
         const $searchContainer = $table.closest('.card').find('[data-search-container]');
         const $entriesContainer = $table.closest('.card').find('[data-entries-container]');
         const $paginationContainer = $table.closest('.card').find('[data-pagination-container]');
@@ -24,9 +25,26 @@ $(document).ready(function () {
             const startIndex = (page - 1) * perPage;
             const endIndex = startIndex + perPage;
 
-            // Show only rows within the range
+            // Hide all rows and show the filtered rows in the range
             filteredRows.hide();
-            filteredRows.slice(startIndex, endIndex).show();
+            const visibleRows = filteredRows.slice(startIndex, endIndex);
+            visibleRows.show();
+
+            // Check if no rows are visible
+            if (visibleRows.length === 0 && filteredRows.length > 0) {
+                // Add a "No results found" row only if it's not already added
+                if ($tbody.find('.no-results-row').length === 0) {
+                    const noResultsRow = `
+                        <tr class="no-results-row">
+                            <td colspan="${$table.find('thead th').length}" class="text-center">No results found</td>
+                        </tr>
+                    `;
+                    $tbody.append(noResultsRow);
+                }
+            } else {
+                // Remove the "No results found" row if it exists
+                $tbody.find('.no-results-row').remove();
+            }
 
             updatePagination(page);
         }
@@ -37,7 +55,7 @@ $(document).ready(function () {
             const totalPages = Math.ceil(totalRows / perPage);
 
             let paginationHtml = `
-                <ul class="pagination pagination-sm">
+                <ul class="pagination pagination-sm m-0">
                     <li class="page-item ${page === 1 ? 'disabled' : ''}">
                         <a class="page-link" href="#" data-page="${page - 1}">
                             <i class="ri-arrow-left-double-fill"></i>
@@ -101,7 +119,9 @@ $(document).ready(function () {
     }
 
     // Apply to all tables with data attributes
-    $('table').each(function () {
+    $('#table1').each(function () {
         initializeDataTable(this);
     });
 });
+
+
