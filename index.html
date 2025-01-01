@@ -231,7 +231,7 @@
                     </div>
                     <div class="search-table d-flex align-items-center" data-search-container>
                         <span class="small me-1">Search:</span> <input type="text"
-                            class="form-control form-control-sm" />
+                            id="search-input" class="form-control form-control-sm" />
                     </div>
                 </div>
                 <div class="card-body p-2">
@@ -247,73 +247,73 @@
                         </thead>
                         <tbody>
                             <!-- Sample Data -->
-                            <tr>
+                            <tr data-name="John Doe">
                                 <td>1</td>
                                 <td>John Doe</td>
                                 <td>30</td>
                                 <td>India</td>
                             </tr>
-                            <tr>
+                            <tr data-name="Jane Smith">
                                 <td>2</td>
                                 <td>Jane Smith</td>
                                 <td>25</td>
                                 <td>USA</td>
                             </tr>
-                            <tr>
+                            <tr data-name="Tom Lee">
                                 <td>3</td>
                                 <td>Tom Lee</td>
                                 <td>28</td>
                                 <td>Australia</td>
                             </tr>
-                            <tr>
+                            <tr data-name="Linda Brown">
                                 <td>4</td>
                                 <td>Linda Brown</td>
                                 <td>32</td>
                                 <td>Canada</td>
                             </tr>
-                            <tr>
+                            <tr data-name="Mark Davis">
                                 <td>5</td>
                                 <td>Mark Davis</td>
                                 <td>45</td>
                                 <td>UK</td>
                             </tr>
-                            <tr>
+                            <tr data-name="Susan Clark">
                                 <td>6</td>
                                 <td>Susan Clark</td>
                                 <td>38</td>
                                 <td>Germany</td>
                             </tr>
-                            <tr>
+                            <tr data-name="Michael Johnson">
                                 <td>7</td>
                                 <td>Michael Johnson</td>
                                 <td>40</td>
                                 <td>USA</td>
                             </tr>
-                            <tr>
+                            <tr data-name="Emma Williams">
                                 <td>8</td>
                                 <td>Emma Williams</td>
                                 <td>29</td>
                                 <td>Canada</td>
                             </tr>
-                            <tr>
+                            <tr data-name="Lucas Martinez">
                                 <td>9</td>
                                 <td>Lucas Martinez</td>
                                 <td>35</td>
                                 <td>Spain</td>
                             </tr>
-                            <tr>
+                            <tr data-name="Olivia Wilson">
                                 <td>10</td>
                                 <td>Olivia Wilson</td>
                                 <td>26</td>
                                 <td>Australia</td>
                             </tr>
-                            <tr>
+                            <tr data-name="Ethan Taylor">
                                 <td>11</td>
                                 <td>Ethan Taylor</td>
                                 <td>33</td>
                                 <td>UK</td>
                             </tr>
-                            <tr>
+                            <tr data-name="Chloe Brown">
                                 <td>12</td>
                                 <td>Chloe Brown</td>
                                 <td>31</td>
@@ -321,6 +321,7 @@
                             </tr>
                         </tbody>                        
                     </table>
+                    <div id="data-not-found-msg" style="display:none;"><h3>Data Not Found</h3></div>
                 </div>
                 <div class="card-footer d-flex justify-content-end align-items-center" style="background-color: rgba(0,0,0,0);">
                     <nav class="" data-pagination-container></nav>
@@ -352,6 +353,33 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./assets/js/datatable.js"></script>
     <script src="./assets/js/script.js"></script>
+    <script>
+    const search_input = document.getElementById("search-input");
+    search_input.addEventListener("keydown", () => {
+        const rows = document.querySelectorAll('#table1 tbody tr');
+        if (!search_input.value) {
+            return;
+        }
+        var fc = false;
+        rows.forEach(row => {
+            if (row.getAttribute("data-name").toLowerCase().includes(search_input.value.toLowerCase())) {
+                row.style.display = "table-row";
+                fc = true;
+                console.log(fc);
+            } else {
+                console.log(row.style.display);
+                row.style.display = "none";
+            }
+        });
+        let dnfm = document.getElementById("data-not-found-msg");
+        if (fc) {
+            dnfm.style.display = "none";
+        } else {
+            dnfm.style.display = "block";
+        }
+        console.log(fc);
+    });
+    </script>
 </body>
 
 </html>
